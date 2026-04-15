@@ -20,8 +20,8 @@ const NavLink = forwardRef<HTMLAnchorElement, NavLinkProps>(
         href={href}
         data-active={isActive ? "true" : undefined}
         aria-current={isActive ? "page" : undefined}
-        className={cn(className, isActive && activeClassName)}
         {...props}
+        className={cn(className, isActive && activeClassName)}
       />
     );
   },

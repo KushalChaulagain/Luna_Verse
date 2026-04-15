@@ -67,6 +67,16 @@ const PortalHero = ({ onUnlock, onSlideProgress }: PortalHeroProps) => {
   const sliderX = useMotionValue(0);
   const logoSize = usePortalLogoSize();
   const trackRef = useRef<HTMLDivElement>(null);
+  const unlockTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (unlockTimeoutRef.current !== null) {
+        clearTimeout(unlockTimeoutRef.current);
+        unlockTimeoutRef.current = null;
+      }
+    };
+  }, []);
 
   const measureTrack = useCallback(() => {
     const el = trackRef.current;
@@ -114,7 +124,13 @@ const PortalHero = ({ onUnlock, onSlideProgress }: PortalHeroProps) => {
     if (current > maxDrag * 0.8) {
       animate(sliderX, maxDrag, { duration: 0.3 });
       setUnlocked(true);
-      setTimeout(onUnlock, 600);
+      if (unlockTimeoutRef.current !== null) {
+        clearTimeout(unlockTimeoutRef.current);
+      }
+      unlockTimeoutRef.current = setTimeout(() => {
+        unlockTimeoutRef.current = null;
+        onUnlock();
+      }, 600);
     } else {
       animate(sliderX, 0, { type: "spring", stiffness: 300, damping: 25 });
     }

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Rocket, Cog, Building2, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 const features = [
   {
@@ -60,7 +61,7 @@ const BentoGrid = () => {
           Learning path
         </motion.p>
         <motion.h2
-          className="text-3xl sm:text-4xl font-semibold tracking-tight text-foreground mb-4"
+          className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-4"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -68,7 +69,7 @@ const BentoGrid = () => {
           The <span className="text-gradient">roadmap</span>
         </motion.h2>
         <motion.p
-          className="text-muted-foreground text-sm sm:text-base leading-relaxed"
+          className="text-base sm:text-lg font-medium leading-[1.5] text-body"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -91,7 +92,7 @@ const BentoGrid = () => {
             <motion.article
               key={f.title}
               className={[
-                "glass-card rounded-2xl p-6 sm:p-8 flex flex-col min-h-[200px] relative overflow-hidden transition-shadow duration-300",
+                "glass-card-elevated rounded-2xl p-6 sm:p-8 flex flex-col min-h-[200px] relative overflow-hidden transition-shadow duration-300",
                 "hover:shadow-lg hover:shadow-primary/5",
                 f.span,
                 isLive ? "ring-1 ring-primary/25" : "border-dashed border-muted-foreground/20",
@@ -112,39 +113,39 @@ const BentoGrid = () => {
                   <f.icon className="w-6 h-6" strokeWidth={1.75} />
                 </div>
                 {isLive ? (
-                  <Badge className="font-mono text-[10px] uppercase tracking-wider bg-primary/20 text-primary hover:bg-primary/25 border-0">
+                  <Badge className="font-mono font-medium text-[10px] uppercase tracking-wider bg-primary/20 text-primary hover:bg-primary/25 border-0">
                     <Sparkles className="w-3 h-3 mr-1" />
                     Enrolling
                   </Badge>
                 ) : (
                   <Badge
                     variant="secondary"
-                    className="font-mono text-[10px] uppercase tracking-wider bg-muted/80 text-muted-foreground border-border/60"
+                    className="font-mono font-medium text-[10px] uppercase tracking-wider bg-muted/80 text-muted-foreground border-border/60"
                   >
                     Soon · {f.eta}
                   </Badge>
                 )}
               </div>
 
-              <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-2 tracking-tight">
+              <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2 tracking-tight">
                 {f.title}{" "}
                 <span className="not-italic" aria-hidden>
                   {f.titleEmoji}
                 </span>
               </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed flex-1">{f.description}</p>
+              <p className="text-base font-medium leading-[1.5] text-body flex-1">{f.description}</p>
 
               {isLive && (
-                <div className="mt-6 pt-5 border-t border-border/50 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <span className="font-mono text-[11px] text-primary tracking-wide uppercase">
-                    ● Open for enrollment
-                  </span>
-                  <Link
-                    href="/mission"
-                    className="text-sm font-medium text-primary hover:underline underline-offset-4"
-                  >
-                    Reserve a seat
-                  </Link>
+                <div className="mt-6 pt-5 border-t border-border/50 flex flex-col gap-4">
+                  <p className="text-sm font-medium leading-relaxed text-body/95 text-center sm:text-left">
+                    <span className="text-foreground">4.8/5</span> average rating · Join{" "}
+                    <span className="text-foreground">500+</span> learners
+                  </p>
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                    <span className="font-mono font-medium text-[11px] text-primary tracking-wide uppercase">
+                      ● Open for enrollment
+                    </span>
+                  </div>
                 </div>
               )}
             </motion.article>
