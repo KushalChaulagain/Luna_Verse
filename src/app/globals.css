@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 230 25% 5%;
+    --foreground: 210 40% 96%;
+
+    --card: 230 20% 10%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 230 20% 10%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 185 80% 55%;
+    --primary-foreground: 230 25% 5%;
+
+    --secondary: 270 60% 55%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 230 15% 15%;
+    --muted-foreground: 215 18% 68%;
+
+    --accent: 185 80% 55%;
+    --accent-foreground: 230 25% 5%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 230 15% 20%;
+    --input: 230 15% 18%;
+    --ring: 185 80% 55%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 230 20% 8%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 185 80% 55%;
+    --sidebar-primary-foreground: 230 25% 5%;
+    --sidebar-accent: 230 15% 15%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 230 15% 20%;
+    --sidebar-ring: 185 80% 55%;
+
+    --glass-bg: 230 20% 10%;
+    --glass-border: 220 10% 40%;
+    --cyan-glow: 185 80% 55%;
+    --purple-glow: 270 60% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-bottom: 6rem;
+    scroll-padding-top: 1rem;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Space Grotesk', sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    background: hsla(var(--glass-bg) / 0.72);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid hsla(var(--glass-border) / 0.25);
+    box-shadow:
+      inset 0 1px 0 hsla(0 0% 100% / 0.06),
+      0 4px 24px hsla(0 0% 0% / 0.35),
+      0 0 0 1px hsla(var(--cyan-glow) / 0.04);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 20px hsla(var(--cyan-glow) / 0.4), 0 0 60px hsla(var(--cyan-glow) / 0.15);
+  }
+
+  .glow-cyan-pulse {
+    animation: cyan-pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@keyframes cyan-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px hsla(var(--cyan-glow) / 0.4), 0 0 60px hsla(var(--cyan-glow) / 0.15);
+  }
+  50% {
+    box-shadow: 0 0 30px hsla(var(--cyan-glow) / 0.6), 0 0 80px hsla(var(--cyan-glow) / 0.25);
+  }
+}
