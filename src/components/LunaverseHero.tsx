@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Montserrat } from "next/font/google";
 import { Button } from "@/components/ui/button";
@@ -109,7 +110,7 @@ const LunaverseHero = () => {
             size="lg"
             className="h-12 border-0 bg-white/95 px-8 font-semibold tracking-wide text-slate-950 shadow-lg shadow-purple-500/20 hover:bg-white"
           >
-            <a href="#courses">Explore courses</a>
+            <Link href="/courses">Explore courses</Link>
           </Button>
           <Button
             asChild
@@ -117,7 +118,7 @@ const LunaverseHero = () => {
             size="lg"
             className="h-12 border-white/40 bg-transparent px-8 font-semibold tracking-wide text-white backdrop-blur-sm hover:bg-white/10 hover:text-white"
           >
-            <a href="#mission">Join waitlist</a>
+            <Link href="/mission">Join waitlist</Link>
           </Button>
         </motion.div>
       </div>

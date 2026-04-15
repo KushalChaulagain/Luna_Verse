@@ -2,12 +2,13 @@
 
 import { motion } from "framer-motion";
 import { Home, BookOpen, Target, User } from "lucide-react";
+import { NavLink } from "@/components/NavLink";
 
 const navItems = [
-  { icon: Home, label: "Home", href: "#home" },
-  { icon: BookOpen, label: "Courses", href: "#courses" },
-  { icon: Target, label: "Mission", href: "#mission" },
-  { icon: User, label: "Profile", href: "#profile" },
+  { icon: Home, label: "Home", href: "/home" },
+  { icon: BookOpen, label: "Courses", href: "/courses" },
+  { icon: Target, label: "Mission", href: "/mission" },
+  { icon: User, label: "Profile", href: "/profile" },
 ];
 
 const BottomDock = () => {
@@ -21,19 +22,20 @@ const BottomDock = () => {
     >
       <div className="glass-card rounded-2xl px-1.5 sm:px-3 py-2 flex gap-0 sm:gap-1 shadow-2xl shadow-black/40 pointer-events-auto w-full max-w-[min(100%,22rem)] sm:max-w-[min(100%,24rem)] mx-3 sm:mx-4 mb-[max(0.75rem,env(safe-area-inset-bottom))] border-border/40">
         {navItems.map((item) => (
-          <a
+          <NavLink
             key={item.label}
             href={item.href}
-            className="flex flex-1 flex-col items-center gap-0.5 sm:gap-1 min-w-0 min-h-[44px] sm:min-w-[4rem] px-1.5 sm:px-3 py-2 rounded-xl hover:bg-muted/60 active:bg-muted/80 transition-colors group"
+            className="group flex flex-1 flex-col items-center gap-0.5 sm:gap-1 min-w-0 min-h-[44px] sm:min-w-[4rem] px-1.5 sm:px-3 py-2 rounded-xl hover:bg-muted/60 active:bg-muted/80 transition-colors"
+            activeClassName="bg-muted/70"
           >
             <item.icon
-              className="w-5 h-5 text-muted-foreground group-hover:text-primary group-focus-visible:text-primary transition-colors"
+              className="w-5 h-5 text-muted-foreground group-hover:text-primary group-focus-visible:text-primary transition-colors group-data-[active=true]:text-primary"
               strokeWidth={1.75}
             />
-            <span className="font-mono text-[9px] sm:text-[10px] text-muted-foreground group-hover:text-foreground transition-colors tracking-wider truncate max-w-full">
+            <span className="font-mono text-[9px] sm:text-[10px] text-muted-foreground group-hover:text-foreground transition-colors tracking-wider truncate max-w-full group-data-[active=true]:text-foreground">
               {item.label}
             </span>
-          </a>
+          </NavLink>
         ))}
       </div>
     </motion.nav>

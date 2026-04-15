@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Rocket, Cog, Building2, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -135,12 +136,12 @@ const BentoGrid = () => {
                   <span className="font-mono text-[11px] text-primary tracking-wide uppercase">
                     ● Open for enrollment
                   </span>
-                  <a
-                    href="#mission"
+                  <Link
+                    href="/mission"
                     className="text-sm font-medium text-primary hover:underline underline-offset-4"
                   >
                     Reserve a seat
-                  </a>
+                  </Link>
                 </div>
               )}
             </motion.article>
