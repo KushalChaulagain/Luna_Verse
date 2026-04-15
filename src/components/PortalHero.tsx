@@ -17,7 +17,10 @@ interface PortalHeroProps {
 
 const THUMB_SIZE = 48;
 /** Horizontal inset inside the pill for the thumb (matches pl-2 / pr-2 intent). */
-const TRACK_INSET = 8;
+const TRACK_INSET = 10;
+
+/** Extra width for the slide track vs. the logo column (breathing room for label + thumb). */
+const TRACK_EXTRA_WIDTH = 72;
 
 function usePortalLogoSize() {
   const [logoSize, setLogoSize] = useState(220);
@@ -125,14 +128,11 @@ const PortalHero = ({ onUnlock, onSlideProgress }: PortalHeroProps) => {
       animate={unlocked ? { opacity: 0, scale: 1.02 } : {}}
       transition={{ duration: 0.8, ease: "easeInOut" }}
     >
-      {/* One column: logo + slide track share width — reads as a single lock screen unit */}
-      <div
-        className="flex w-full flex-col items-center gap-4 sm:gap-5"
-        style={{ maxWidth: `min(${portalW}px, calc(100vw - 2rem))` }}
-      >
+      {/* Logo column; slide track is slightly wider for label + thumb spacing */}
+      <div className="flex w-full flex-col items-center gap-4 sm:gap-5">
         <motion.div
           className="relative mx-auto aspect-square w-full max-w-full shrink-0"
-          style={{ maxWidth: portalW }}
+          style={{ maxWidth: `min(${portalW}px, calc(100vw - 2rem))` }}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
@@ -181,15 +181,20 @@ const PortalHero = ({ onUnlock, onSlideProgress }: PortalHeroProps) => {
           </div>
         </motion.div>
 
-        {/* Slide to open — width matches logo column */}
-        <div className="w-full shrink-0">
+        {/* Slide to open — a bit wider than logo for padding around text + chevron */}
+        <div
+          className="w-full shrink-0"
+          style={{
+            maxWidth: `min(${portalW + TRACK_EXTRA_WIDTH}px, calc(100vw - 2rem))`,
+          }}
+        >
           <div
             ref={trackRef}
             className="relative mx-auto h-12 w-full rounded-full border border-white/12 bg-black/45 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_8px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl"
             role="region"
             aria-label="Slide to open the site"
           >
-            <p className="pointer-events-none absolute inset-0 flex items-center justify-center px-11 text-center text-[10px] font-medium uppercase tracking-[0.22em] text-white/38 sm:text-[11px] sm:tracking-[0.2em]">
+            <p className="pointer-events-none absolute inset-0 flex items-center justify-center px-14 text-center text-[10px] font-medium uppercase tracking-[0.28em] text-white/38 sm:px-16 sm:text-[11px] sm:tracking-[0.3em]">
               Enter to the Void
             </p>
 
