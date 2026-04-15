@@ -120,7 +120,7 @@ const LunaverseHero = () => {
         </motion.h1>
 
         <motion.p
-          className="mx-auto mt-8 max-w-xl text-right text-[11px] font-semibold uppercase leading-relaxed tracking-[0.12em] text-white/95 sm:mt-10 sm:text-xs md:text-[13px]"
+          className="mx-auto mt-8 max-w-xl text-center text-[11px] font-semibold uppercase leading-relaxed tracking-[0.12em] text-white/95 sm:mt-10 sm:text-right sm:text-xs md:text-[13px]"
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
@@ -159,7 +159,7 @@ const LunaverseHero = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.28 }}
       >
-        <div className="max-w-3xl rounded-full border border-white/85 px-5 py-3.5 text-center text-[11px] font-medium leading-relaxed text-white/95 shadow-[0_0_40px_rgba(255,255,255,0.06)] sm:px-10 sm:text-sm">
+        <div className="w-full max-w-3xl rounded-2xl border border-white/85 px-4 py-3.5 text-center text-[10px] font-medium leading-relaxed text-white/95 shadow-[0_0_40px_rgba(255,255,255,0.06)] sm:rounded-full sm:px-10 sm:text-sm">
           <span className="font-semibold tracking-wide">MISSION:</span> Empowering
           Nepal&apos;s youth to dominate the global tech scene. No more excuses. Just code.
         </div>

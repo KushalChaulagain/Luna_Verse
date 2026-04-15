@@ -29,7 +29,7 @@ const WaitlistForm = () => {
     <>
       {warping && <WarpEffect />}
       <section
-        className="px-4 sm:px-6 py-16 sm:py-24 max-w-xl mx-auto text-center scroll-mt-28"
+        className="px-4 sm:px-6 py-12 sm:py-24 max-w-xl mx-auto text-center scroll-mt-24 sm:scroll-mt-28"
         id="mission"
       >
         <AnimatePresence mode="wait">

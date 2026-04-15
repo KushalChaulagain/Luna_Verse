@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 
@@ -8,14 +8,38 @@ interface PortalHeroProps {
   onUnlock: () => void;
 }
 
+function usePortalLayout() {
+  const [layout, setLayout] = useState({ logoSize: 220, thumbSize: 48 });
+
+  useEffect(() => {
+    const compute = () => {
+      const vw = window.innerWidth;
+      // Fit logo in narrow viewports; keep thumb proportional for drag range
+      const logoSize = Math.min(220, Math.max(168, vw - 40));
+      const thumbSize = Math.round(48 * (logoSize / 220));
+      setLayout({
+        logoSize,
+        thumbSize: Math.max(40, Math.min(thumbSize, 52)),
+      });
+    };
+    compute();
+    window.addEventListener("resize", compute);
+    return () => window.removeEventListener("resize", compute);
+  }, []);
+
+  return layout;
+}
+
 const PortalHero = ({ onUnlock }: PortalHeroProps) => {
   const [unlocked, setUnlocked] = useState(false);
   const constraintsRef = useRef<HTMLDivElement>(null);
   const sliderX = useMotionValue(0);
-
-  const logoSize = 220;
-  const thumbSize = 48;
+  const { logoSize, thumbSize } = usePortalLayout();
   const maxDrag = logoSize - thumbSize;
+
+  useEffect(() => {
+    sliderX.set(0);
+  }, [logoSize, thumbSize, sliderX]);
 
   const leftOpacity = useTransform(sliderX, [0, maxDrag * 0.5], [0.8, 0]);
   const portalOpacity = useTransform(sliderX, [maxDrag * 0.7, maxDrag], [1, 0]);
@@ -33,7 +57,7 @@ const PortalHero = ({ onUnlock }: PortalHeroProps) => {
 
   return (
     <motion.div
-      className="fixed inset-0 z-40 flex items-center justify-center"
+      className="fixed inset-0 z-40 flex items-center justify-center px-4 pb-[max(0.5rem,env(safe-area-inset-bottom,0px))] pt-[max(0.5rem,env(safe-area-inset-top,0px))]"
       animate={unlocked ? { opacity: 0, scale: 1.3 } : {}}
       transition={{ duration: 0.8, ease: "easeInOut" }}
     >

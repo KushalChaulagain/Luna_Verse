@@ -1,6 +1,16 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Providers } from "./providers";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "hsl(230 25% 5%)" },
+    { color: "hsl(230 25% 5%)" },
+  ],
+};
 
 export const metadata: Metadata = {
   title: "lunaverse",

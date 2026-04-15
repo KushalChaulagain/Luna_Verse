@@ -45,7 +45,7 @@ const item = {
 
 const BentoGrid = () => {
   return (
-    <section className="px-4 sm:px-6 py-6 sm:py-10 max-w-5xl mx-auto scroll-mt-28" id="courses">
+    <section className="px-4 sm:px-6 py-6 sm:py-10 max-w-5xl mx-auto scroll-mt-24 sm:scroll-mt-28" id="courses">
       <div className="text-center mb-10 sm:mb-12 max-w-2xl mx-auto">
         <motion.p
           className="text-xs font-semibold uppercase tracking-[0.22em] text-primary/90 mb-3"
@@ -131,7 +131,7 @@ const BentoGrid = () => {
               <p className="text-sm text-muted-foreground leading-relaxed flex-1">{f.description}</p>
 
               {isLive && (
-                <div className="mt-6 pt-5 border-t border-border/50 flex items-center justify-between gap-3">
+                <div className="mt-6 pt-5 border-t border-border/50 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                   <span className="font-mono text-[11px] text-primary tracking-wide uppercase">
                     ● Open for enrollment
                   </span>

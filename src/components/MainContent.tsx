@@ -10,7 +10,7 @@ import { ArrowDown } from "lucide-react";
 const MainContent = () => {
   return (
     <motion.div
-      className="relative z-10 min-h-screen pb-36 sm:pb-40"
+      className="relative z-10 min-h-screen pb-[calc(9rem+env(safe-area-inset-bottom,0px))] sm:pb-[calc(10rem+env(safe-area-inset-bottom,0px))]"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
