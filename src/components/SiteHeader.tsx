@@ -10,8 +10,7 @@ const SiteHeader = () => {
   return (
     <header
       className={cn(
-        "fixed left-0 right-0 top-0 z-50 flex h-[calc(3.5rem+env(safe-area-inset-top,0px))] items-center justify-between gap-4 border-b border-border/30 px-4 pt-[env(safe-area-inset-top,0px)] sm:px-6",
-        "glass-card rounded-none border-x-0 border-t-0",
+        "glass-navbar fixed left-0 right-0 top-0 z-50 flex h-[calc(3.5rem+env(safe-area-inset-top,0px))] items-center justify-between gap-4 px-4 pt-[env(safe-area-inset-top,0px)] sm:px-6",
       )}
     >
       <Link
@@ -40,10 +39,10 @@ const SiteHeader = () => {
             key={item.href}
             href={item.href}
             className={cn(
-              "rounded-lg px-2.5 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-muted/60 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+              "rounded-lg px-2.5 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-white/[0.08] hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
               "flex items-center gap-1.5 sm:px-3",
             )}
-            activeClassName="bg-muted/70 text-primary"
+            activeClassName="bg-primary/15 text-primary ring-1 ring-primary/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
           >
             <item.icon className="h-4 w-4 shrink-0 opacity-90" strokeWidth={2} aria-hidden />
             <span>{item.label}</span>

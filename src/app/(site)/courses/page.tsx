@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import BentoGrid from "@/components/BentoGrid";
+import PythonLaunchpadOffer from "@/components/PythonLaunchpadOffer";
 
 export const metadata: Metadata = {
   title: "Courses | lunaverse",
@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function CoursesPage() {
-  return <BentoGrid />;
+  return <PythonLaunchpadOffer />;
 }

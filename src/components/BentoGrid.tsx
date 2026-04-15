@@ -8,30 +8,33 @@ import { Button } from "@/components/ui/button";
 
 const features = [
   {
-    icon: Rocket,
     title: "Python Launchpad",
     titleEmoji: "🚀",
-    description: "10-day intensive. Zero to code. Three shipped projects and a portfolio you can show.",
+    description:
+      "Zero → shipped projects in 10 days: Python, automation, APIs, and a portfolio you can demo.",
     status: "live" as const,
+    icon: Rocket,
     span: "lg:col-span-2",
   },
   {
-    icon: Cog,
-    title: "The Automation Engine",
+    title: "Automation & data tracks",
     titleEmoji: "⚙️",
-    description: "Custom agents, scripts, and integrations—so repetitive work runs without you.",
-    status: "coming" as const,
-    eta: "30 days",
-    span: "lg:col-span-1",
+    description:
+      "Deeper workflows around scraping, scheduling, and data pipelines—after Launchpad.",
+    status: "soon" as const,
+    eta: "Next",
+    icon: Cog,
+    span: "",
   },
   {
+    title: "Founder stack lab",
+    titleEmoji: "🏢",
+    description:
+      "Ship small products end-to-end: APIs, lightweight backends, and deployment basics.",
+    status: "soon" as const,
+    eta: "2026",
     icon: Building2,
-    title: "Full-Stack Architect",
-    titleEmoji: "🏗️",
-    description: "Modern web stack, APIs, and deployment—build apps that scale with real users.",
-    status: "coming" as const,
-    eta: "60 days",
-    span: "lg:col-span-1",
+    span: "",
   },
 ];
 
@@ -48,10 +51,10 @@ const item = {
 const BentoGrid = () => {
   return (
     <section
-      className="mx-auto max-w-5xl scroll-mt-24 px-4 pt-6 pb-[calc(5.75rem+env(safe-area-inset-bottom,0px))] sm:scroll-mt-28 sm:px-6 sm:py-10"
+      className="mx-auto max-w-5xl scroll-mt-24 px-4 pt-5 pb-[calc(5.75rem+env(safe-area-inset-bottom,0px))] sm:scroll-mt-28 sm:px-6 sm:pt-10 sm:pb-[calc(5.75rem+env(safe-area-inset-bottom,0px))]"
       id="courses"
     >
-      <div className="text-center mb-10 sm:mb-12 max-w-2xl mx-auto">
+      <div className="text-center mb-8 sm:mb-12 max-w-2xl mx-auto px-0.5">
         <motion.p
           className="text-xs font-semibold uppercase tracking-[0.22em] text-primary/90 mb-3"
           initial={{ opacity: 0, y: 12 }}
@@ -61,7 +64,7 @@ const BentoGrid = () => {
           Learning path
         </motion.p>
         <motion.h2
-          className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-4"
+          className="text-[1.65rem] leading-tight sm:text-4xl font-bold tracking-tight text-foreground mb-4"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -80,7 +83,7 @@ const BentoGrid = () => {
       </div>
 
       <motion.div
-        className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 auto-rows-fr"
+        className="grid grid-cols-1 lg:grid-cols-2 gap-3.5 sm:gap-5 auto-rows-fr min-w-0"
         variants={container}
         initial="hidden"
         whileInView="show"
@@ -92,7 +95,7 @@ const BentoGrid = () => {
             <motion.article
               key={f.title}
               className={[
-                "glass-card-elevated rounded-2xl p-6 sm:p-8 flex flex-col min-h-[200px] relative overflow-hidden transition-shadow duration-300",
+                "glass-card-elevated rounded-2xl p-5 sm:p-8 flex flex-col min-h-[180px] sm:min-h-[200px] relative overflow-hidden transition-shadow duration-300",
                 "hover:shadow-lg hover:shadow-primary/5",
                 f.span,
                 isLive ? "ring-1 ring-primary/25" : "border-dashed border-muted-foreground/20",
@@ -127,7 +130,7 @@ const BentoGrid = () => {
                 )}
               </div>
 
-              <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2 tracking-tight">
+              <h3 className="text-lg sm:text-2xl font-bold text-foreground mb-2 tracking-tight break-words">
                 {f.title}{" "}
                 <span className="not-italic" aria-hidden>
                   {f.titleEmoji}
@@ -145,6 +148,12 @@ const BentoGrid = () => {
                     <span className="font-mono font-medium text-[11px] text-primary tracking-wide uppercase">
                       ● Open for enrollment
                     </span>
+                    <Link
+                      href="#python-launchpad-offer"
+                      className="text-sm font-medium text-primary hover:underline underline-offset-4 text-center sm:text-right"
+                    >
+                      Full syllabus &amp; offer →
+                    </Link>
                   </div>
                 </div>
               )}

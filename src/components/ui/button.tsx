@@ -14,6 +14,9 @@ const buttonVariants = cva(
         outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         cta: "bg-cta text-cta-foreground shadow-md shadow-black/25 hover:bg-cta/90",
+        /** Matches FloatingWhatsAppChat / WhatsApp brand green */
+        whatsapp:
+          "bg-[#25D366] text-white shadow-md shadow-black/25 hover:brightness-110 focus-visible:ring-[#25D366]",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
       },
