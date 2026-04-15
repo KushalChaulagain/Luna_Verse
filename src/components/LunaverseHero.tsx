@@ -107,14 +107,6 @@ const LunaverseHero = () => {
           >
             <Link href="/courses#courses">Enroll in Python Launchpad</Link>
           </Button>
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="h-11 border-white/55 bg-transparent px-10 text-sm font-semibold tracking-wide text-foreground shadow-sm backdrop-blur-sm transition-shadow hover:border-primary/60 hover:bg-white/5 hover:text-foreground hover:shadow-md sm:h-12 sm:px-12 sm:text-base"
-          >
-            <Link href="/about">About us</Link>
-          </Button>
         </motion.div>
 
         <motion.div
