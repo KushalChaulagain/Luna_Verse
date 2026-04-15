@@ -34,7 +34,7 @@ function enrollWhatsAppHref(): string {
 
 const learningOutcomes = [
   "Read and write Python with clear structure: functions, modules, and error handling you can explain to others.",
-  "Work with real data files CSV/JSON, and simple REST APIs—without copy-pasting blindly.",
+  "Work with real data files CSV/JSON, and simple REST APIs without copy-pasting blindly.",
   "Automate repetitive tasks with scripts you can reuse at school, work, or your own projects.",
   "Ship three small but real projects: CLI tool, data/automation script, and a portfolio-ready capstone.",
   "Use Git and GitHub basics so your work is versioned, shareable, and employer-friendly.",
@@ -148,7 +148,7 @@ export default function PythonLaunchpadOffer() {
             <p className="text-base sm:text-lg font-medium leading-relaxed text-body mb-6">
               A 10-day intensive that takes you from zero to three shipped
               projects and a portfolio story you can show in
-              interviews—structured like a serious online course, taught live
+              interviews structured like a serious online course, taught live
               with a cohort.
             </p>
             <ul className="flex flex-col gap-2 text-sm font-mono text-muted-foreground sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-2">
