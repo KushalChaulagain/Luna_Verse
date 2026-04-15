@@ -46,7 +46,10 @@ const item = {
 
 const BentoGrid = () => {
   return (
-    <section className="px-4 sm:px-6 py-6 sm:py-10 max-w-5xl mx-auto scroll-mt-24 sm:scroll-mt-28" id="courses">
+    <section
+      className="mx-auto max-w-5xl scroll-mt-24 px-4 pt-6 pb-[calc(5.75rem+env(safe-area-inset-bottom,0px))] sm:scroll-mt-28 sm:px-6 sm:py-10"
+      id="courses"
+    >
       <div className="text-center mb-10 sm:mb-12 max-w-2xl mx-auto">
         <motion.p
           className="text-xs font-semibold uppercase tracking-[0.22em] text-primary/90 mb-3"
@@ -70,7 +73,7 @@ const BentoGrid = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          One flagship cohort live today. Deeper tracks unlock as you level up—no noise, just the
+          One flagship cohort live today. Deeper tracks unlock as you level up. No noise, just the
           skills employers and founders actually use.
         </motion.p>
       </div>

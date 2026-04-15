@@ -1,5 +1,6 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -22,10 +23,19 @@ function Sparkle({ className }: { className?: string }) {
   );
 }
 
+/** Space reserved above the fixed bottom dock + safe area (matches BottomDock footprint). */
+const MOBILE_DOCK_GAP =
+  "max(4.75rem,calc(4.25rem + env(safe-area-inset-bottom, 0px)))";
+
 const LunaverseHero = () => {
+  const dockPadStyle = {
+    ["--mobile-dock-gap"]: MOBILE_DOCK_GAP,
+  } as CSSProperties;
+
   return (
     <section
-      className={`relative z-10 min-h-[100svh] flex flex-col overflow-hidden ${montserrat.className}`}
+      style={dockPadStyle}
+      className={`relative z-10 flex min-h-[100svh] flex-col overflow-hidden max-sm:h-[100dvh] max-sm:min-h-0 max-sm:max-h-[100dvh] ${montserrat.className}`}
     >
       {/* Deep space wash + nebula tint over canvas starfield */}
       <div
@@ -61,9 +71,9 @@ const LunaverseHero = () => {
       <Sparkle className="absolute bottom-[38%] left-[28%] text-xs opacity-60" />
       <Sparkle className="absolute bottom-[30%] right-[14%] text-base opacity-75" />
 
-      <div className="relative z-10 flex flex-1 flex-col justify-center px-4 pb-6 pt-20 sm:px-8 sm:pt-24">
+      <div className="relative z-10 flex min-h-0 flex-1 flex-col justify-center px-4 pb-[var(--mobile-dock-gap)] pt-[max(0.5rem,env(safe-area-inset-top,0px))] sm:px-8 sm:pb-12 sm:pt-24">
         <motion.div
-          className="mx-auto mb-8 flex justify-center bg-transparent sm:mb-10"
+          className="mx-auto mb-4 flex shrink-0 justify-center bg-transparent sm:mb-10"
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -74,14 +84,14 @@ const LunaverseHero = () => {
             width={320}
             height={320}
             unoptimized
-            className="h-auto w-[min(52vw,13rem)] max-w-[280px] select-none bg-transparent object-contain drop-shadow-[0_0_32px_rgba(34,211,238,0.22)] sm:w-[min(44vw,15rem)]"
+            className="h-auto w-[min(46vw,10.5rem)] max-w-[280px] select-none bg-transparent object-contain drop-shadow-[0_0_32px_rgba(34,211,238,0.22)] sm:w-[min(44vw,15rem)]"
             style={{ objectPosition: "52% 53%" }}
             priority
           />
         </motion.div>
 
         <motion.h1
-          className="hero-luna-title mx-auto max-w-5xl text-center text-[clamp(1.65rem,5vw,3.75rem)] font-extrabold uppercase leading-[1.08] tracking-[0.02em] text-white"
+          className="hero-luna-title mx-auto max-w-5xl shrink-0 text-center text-[clamp(1.35rem,4.2vw+0.85rem,3.75rem)] font-extrabold uppercase leading-[1.06] tracking-[0.02em] text-white sm:text-[clamp(1.65rem,5vw,3.75rem)] sm:leading-[1.08]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -90,7 +100,7 @@ const LunaverseHero = () => {
         </motion.h1>
 
         <motion.p
-          className="mx-auto mt-8 max-w-xl text-center text-[11px] font-semibold uppercase leading-relaxed tracking-[0.12em] text-white/95 sm:mt-10 sm:text-right sm:text-xs md:text-[13px]"
+          className="mx-auto mt-3 max-w-xl shrink-0 text-center text-[10px] font-semibold uppercase leading-snug tracking-[0.1em] text-white/95 sm:mt-10 sm:text-right sm:text-xs sm:leading-relaxed sm:tracking-[0.12em] md:text-[13px]"
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
@@ -100,7 +110,7 @@ const LunaverseHero = () => {
         </motion.p>
 
         <motion.div
-          className="mx-auto mt-10 flex w-full max-w-md flex-col items-stretch gap-3 sm:mt-12 sm:max-w-lg sm:flex-row sm:justify-center sm:gap-4"
+          className="mx-auto mt-4 flex w-full max-w-md shrink-0 flex-col items-stretch gap-2 sm:mt-12 sm:max-w-lg sm:flex-row sm:justify-center sm:gap-4"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, delay: 0.22 }}
@@ -108,7 +118,7 @@ const LunaverseHero = () => {
           <Button
             asChild
             size="lg"
-            className="h-12 border-0 bg-white/95 px-8 font-semibold tracking-wide text-slate-950 shadow-lg shadow-purple-500/20 hover:bg-white"
+            className="h-11 border-0 bg-white/95 px-6 text-sm font-semibold tracking-wide text-slate-950 shadow-lg shadow-purple-500/20 hover:bg-white sm:h-12 sm:px-8 sm:text-base"
           >
             <Link href="/courses">Explore courses</Link>
           </Button>
@@ -116,24 +126,12 @@ const LunaverseHero = () => {
             asChild
             variant="outline"
             size="lg"
-            className="h-12 border-white/40 bg-transparent px-8 font-semibold tracking-wide text-white backdrop-blur-sm hover:bg-white/10 hover:text-white"
+            className="h-11 border-white/40 bg-transparent px-6 text-sm font-semibold tracking-wide text-white backdrop-blur-sm hover:bg-white/10 hover:text-white sm:h-12 sm:px-8 sm:text-base"
           >
             <Link href="/mission">Join waitlist</Link>
           </Button>
         </motion.div>
       </div>
-
-      <motion.div
-        className="relative z-10 flex justify-center px-4 pb-10 pt-2 sm:pb-12"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.28 }}
-      >
-        <div className="w-full max-w-3xl rounded-2xl border border-white/85 px-4 py-3.5 text-center text-[10px] font-medium leading-relaxed text-white/95 shadow-[0_0_40px_rgba(255,255,255,0.06)] sm:rounded-full sm:px-10 sm:text-sm">
-          <span className="font-semibold tracking-wide">MISSION:</span> Empowering
-          Nepal&apos;s youth to dominate the global tech scene. No more excuses. Just code.
-        </div>
-      </motion.div>
     </section>
   );
 };

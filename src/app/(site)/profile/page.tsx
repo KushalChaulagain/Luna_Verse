@@ -9,7 +9,7 @@ export default function ProfilePage() {
   return (
     <section
       id="profile"
-      className="relative z-10 min-h-[50svh] flex flex-col justify-center px-4 sm:px-6 pb-6 max-w-lg mx-auto text-center"
+      className="relative z-10 mx-auto flex min-h-[50svh] max-w-lg flex-col justify-center px-4 pb-[calc(5.75rem+env(safe-area-inset-bottom,0px))] pt-6 text-center sm:px-6 sm:pb-6"
       aria-label="Student profile"
     >
       <p className="text-sm text-muted-foreground">
