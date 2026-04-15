@@ -2,18 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { forwardRef } from "react";
+import { forwardRef, type ComponentProps } from "react";
 import { cn } from "@/lib/utils";
 
-interface NavLinkCompatProps {
-  href: string;
-  className?: string;
+type NavLinkProps = ComponentProps<typeof Link> & {
   activeClassName?: string;
-  children?: React.ReactNode;
-  [key: string]: unknown;
-}
+};
 
-const NavLink = forwardRef<HTMLAnchorElement, NavLinkCompatProps>(
+const NavLink = forwardRef<HTMLAnchorElement, NavLinkProps>(
   ({ className, activeClassName, href, ...props }, ref) => {
     const pathname = usePathname();
     const isActive = pathname === href;
