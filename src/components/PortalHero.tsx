@@ -9,11 +9,6 @@ import {
 } from "framer-motion";
 import Image from "next/image";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import {
-  LUNAVERSE_SLIDE_UNLOCK_ID,
-  useSlideUnlockTour,
-} from "@/hooks/useSlideUnlockTour";
-
 interface PortalHeroProps {
   onUnlock: () => void;
   /** 0–1 while dragging; drives partial logo + background intensity */
@@ -69,8 +64,6 @@ const PortalHero = ({ onUnlock, onSlideProgress }: PortalHeroProps) => {
   const sliderX = useMotionValue(0);
   const logoSize = usePortalLogoSize();
   const trackRef = useRef<HTMLDivElement>(null);
-
-  useSlideUnlockTour(!unlocked);
 
   const measureTrack = useCallback(() => {
     const el = trackRef.current;
@@ -188,10 +181,9 @@ const PortalHero = ({ onUnlock, onSlideProgress }: PortalHeroProps) => {
           </div>
         </motion.div>
 
-        {/* iPhone-style slide to open — Driver.js targets this id; width matches logo column */}
+        {/* Slide to open — width matches logo column */}
         <div className="w-full shrink-0">
           <div
-            id={LUNAVERSE_SLIDE_UNLOCK_ID}
             ref={trackRef}
             className="relative mx-auto h-12 w-full rounded-full border border-white/12 bg-black/45 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_8px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl"
             role="region"

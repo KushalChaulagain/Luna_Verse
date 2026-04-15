@@ -11,6 +11,15 @@ const nextConfig: NextConfig = {
   experimental: {
     devtoolSegmentExplorer: false,
   },
+  // Webpack’s default dev filesystem cache uses .next/cache/webpack/*.pack.gz. Those files
+  // go missing (ENOENT) when another process deletes or locks them — common with OneDrive
+  // sync on Desktop. Memory cache is slower on cold compile but avoids corrupt chunks.
+  webpack: (config, { dev }) => {
+    if (dev) {
+      config.cache = { type: "memory" };
+    }
+    return config;
+  },
 };
 
 export default nextConfig;
