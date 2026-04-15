@@ -12,18 +12,36 @@ export const viewport: Viewport = {
   ],
 };
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "lunaverse",
   description: "Where code meets community. Built for Nepal's next-gen builders.",
+  icons: {
+    icon: [{ url: "/final_logo.png", type: "image/png" }],
+    shortcut: [{ url: "/final_logo.png", type: "image/png" }],
+    apple: [{ url: "/final_logo.png", type: "image/png", sizes: "180x180" }],
+  },
   openGraph: {
     title: "lunaverse",
     description: "Where code meets community. Built for Nepal's next-gen builders.",
     type: "website",
+    images: [
+      {
+        url: "/final_logo.png",
+        width: 512,
+        height: 512,
+        alt: "Lunaverse logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "lunaverse",
     description: "Where code meets community. Built for Nepal's next-gen builders.",
+    images: ["/final_logo.png"],
   },
 };
 

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Montserrat } from "next/font/google";
 import { Button } from "@/components/ui/button";
@@ -8,50 +9,6 @@ const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["600", "700", "800"],
 });
-
-function WireframeGlobe({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 200 200"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden
-    >
-      <circle
-        cx="100"
-        cy="100"
-        r="88"
-        stroke="rgba(255,255,255,0.22)"
-        strokeWidth="0.75"
-      />
-      {[0, 30, 60, 90, 120, 150].map((deg) => (
-        <ellipse
-          key={deg}
-          cx="100"
-          cy="100"
-          rx="88"
-          ry="28"
-          stroke="rgba(255,255,255,0.18)"
-          strokeWidth="0.6"
-          transform={`rotate(${deg} 100 100)`}
-        />
-      ))}
-      {[0, 45, 90, 135].map((deg) => (
-        <ellipse
-          key={`v-${deg}`}
-          cx="100"
-          cy="100"
-          rx="28"
-          ry="88"
-          stroke="rgba(255,255,255,0.14)"
-          strokeWidth="0.55"
-          transform={`rotate(${deg} 100 100)`}
-        />
-      ))}
-    </svg>
-  );
-}
 
 function Sparkle({ className }: { className?: string }) {
   return (
@@ -98,18 +55,30 @@ const LunaverseHero = () => {
         aria-hidden
       />
 
-      <WireframeGlobe className="pointer-events-none absolute left-1/2 top-[6%] w-[min(92vw,24rem)] -translate-x-1/2 opacity-[0.42] sm:top-[7%] sm:w-[28rem]" />
-
       <Sparkle className="absolute left-[14%] top-[22%] text-lg opacity-80 sm:left-[18%] sm:text-xl" />
       <Sparkle className="absolute right-[20%] top-[38%] text-sm opacity-70 sm:text-base" />
       <Sparkle className="absolute bottom-[38%] left-[28%] text-xs opacity-60" />
       <Sparkle className="absolute bottom-[30%] right-[14%] text-base opacity-75" />
 
-      <p className="absolute right-5 top-5 z-20 text-[10px] font-medium uppercase tracking-[0.4em] text-white/90 sm:right-8 sm:top-7 sm:text-[11px]">
-        LUNAVERSE
-      </p>
-
       <div className="relative z-10 flex flex-1 flex-col justify-center px-4 pb-6 pt-20 sm:px-8 sm:pt-24">
+        <motion.div
+          className="mx-auto mb-8 flex justify-center bg-transparent sm:mb-10"
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <Image
+            src="/final_logo.png"
+            alt="Lunaverse"
+            width={320}
+            height={320}
+            unoptimized
+            className="h-auto w-[min(52vw,13rem)] max-w-[280px] select-none bg-transparent object-contain drop-shadow-[0_0_32px_rgba(34,211,238,0.22)] sm:w-[min(44vw,15rem)]"
+            style={{ objectPosition: "52% 53%" }}
+            priority
+          />
+        </motion.div>
+
         <motion.h1
           className="hero-luna-title mx-auto max-w-5xl text-center text-[clamp(1.65rem,5vw,3.75rem)] font-extrabold uppercase leading-[1.08] tracking-[0.02em] text-white"
           initial={{ opacity: 0, y: 20 }}

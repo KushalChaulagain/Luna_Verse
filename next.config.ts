@@ -6,6 +6,11 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [],
   },
+  // Avoids dev-only RSC/client-manifest bugs with SegmentViewNode (Next 15 devtools).
+  // Re-enable when upgrading Next if you use the App Router segment explorer in DevTools.
+  experimental: {
+    devtoolSegmentExplorer: false,
+  },
 };
 
 export default nextConfig;

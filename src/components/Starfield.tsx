@@ -2,8 +2,18 @@
 
 import { useEffect, useRef } from "react";
 
-const Starfield = () => {
+interface StarfieldProps {
+  /** 0–1: intensifies drift and twinkle while the portal slider moves */
+  slideProgress?: number;
+}
+
+const Starfield = ({ slideProgress = 0 }: StarfieldProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const slideRef = useRef(0);
+
+  useEffect(() => {
+    slideRef.current = slideProgress;
+  }, [slideProgress]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -45,12 +55,15 @@ const Starfield = () => {
     }
 
     const draw = () => {
+      const boost = 1 + slideRef.current * 2.8;
+      const twinkleAmp = 0.2 + slideRef.current * 0.45;
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // Draw nebulae
       nebulae.forEach((n) => {
-        n.x += n.speed;
-        n.y += n.speed * 0.5;
+        n.x += n.speed * boost;
+        n.y += n.speed * 0.5 * boost;
         if (n.x > canvas.width + n.radius) n.x = -n.radius;
         if (n.x < -n.radius) n.x = canvas.width + n.radius;
 
@@ -64,12 +77,14 @@ const Starfield = () => {
 
       // Draw stars
       stars.forEach((s) => {
-        s.y += s.speed;
+        s.y += s.speed * boost;
         if (s.y > canvas.height) {
           s.y = 0;
           s.x = Math.random() * canvas.width;
         }
-        const flicker = s.opacity + Math.sin(Date.now() * 0.001 + s.x) * 0.2;
+        const flicker =
+          s.opacity +
+          Math.sin(Date.now() * (0.001 + slideRef.current * 0.002) + s.x) * twinkleAmp;
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(255,255,255,${Math.max(0, Math.min(1, flicker))})`;
